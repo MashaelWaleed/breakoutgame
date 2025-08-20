@@ -8,6 +8,7 @@ radius = 12.9947
 height = 133.998
 
 [node name="paddle" type="CharacterBody2D"]
+motion_mode = 1
 script = ExtResource("1_qfiny")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]

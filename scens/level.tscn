@@ -1,7 +1,41 @@
-[gd_scene load_steps=2 format=3 uid="uid://djjor3udj625g"]
+[gd_scene load_steps=6 format=3 uid="uid://djjor3udj625g"]
 
 [ext_resource type="PackedScene" uid="uid://b43x1uq415quk" path="res://scens/paddle.tscn" id="1_4hgif"]
+[ext_resource type="PackedScene" uid="uid://pf5emc2oxa8d" path="res://scens/ball.tscn" id="2_pd1qi"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_pd1qi"]
+height = 774.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_6lwcx"]
+size = Vector2(1196.5, 20)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_s40gg"]
+size = Vector2(676.998, 27.5648)
 
 [node name="level" type="Node2D"]
+metadata/_edit_vertical_guides_ = [-97259.0]
 
 [node name="paddle" parent="." instance=ExtResource("1_4hgif")]
+position = Vector2(37, 50)
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(579, 328)
+
+[node name="ball" parent="." instance=ExtResource("2_pd1qi")]
+position = Vector2(478, 432)
+
+[node name="walls" type="StaticBody2D" parent="."]
+
+[node name="left" type="CollisionShape2D" parent="walls"]
+position = Vector2(-12, 263)
+shape = SubResource("CapsuleShape2D_pd1qi")
+
+[node name="ceilling" type="CollisionShape2D" parent="walls"]
+position = Vector2(568.75, -12)
+shape = SubResource("RectangleShape2D_6lwcx")
+
+[node name="right" type="CollisionShape2D" parent="walls"]
+position = Vector2(1172.37, 318.505)
+rotation = 1.57036
+scale = Vector2(1, 1)
+shape = SubResource("RectangleShape2D_s40gg")
