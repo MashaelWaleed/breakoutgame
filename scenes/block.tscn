@@ -1,0 +1,20 @@
+[gd_scene load_steps=4 format=3 uid="uid://cc7tbp4qrbmoy"]
+
+[ext_resource type="Script" uid="uid://dii4br8pcdeei" path="res://scripts/block.gd" id="1_cgrg5"]
+[ext_resource type="Texture2D" uid="uid://d3bla7583iecl" path="res://assets/BreakOut Assets.png" id="2_4kun4"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ojgcc"]
+size = Vector2(30, 30)
+
+[node name="block" type="RigidBody2D"]
+gravity_scale = 0.0
+script = ExtResource("1_cgrg5")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(2, 2)
+texture = ExtResource("2_4kun4")
+region_enabled = true
+region_rect = Rect2(176.243, 112.318, 15.4589, 14.8644)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_ojgcc")

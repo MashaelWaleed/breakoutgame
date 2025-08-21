@@ -1,7 +1,9 @@
-[gd_scene load_steps=6 format=3 uid="uid://djjor3udj625g"]
+[gd_scene load_steps=8 format=3 uid="uid://djjor3udj625g"]
 
-[ext_resource type="PackedScene" uid="uid://b43x1uq415quk" path="res://scens/paddle.tscn" id="1_4hgif"]
-[ext_resource type="PackedScene" uid="uid://pf5emc2oxa8d" path="res://scens/ball.tscn" id="2_pd1qi"]
+[ext_resource type="PackedScene" uid="uid://b43x1uq415quk" path="res://scenes/paddle.tscn" id="1_4hgif"]
+[ext_resource type="Script" uid="uid://8unyo7u6plcb" path="res://scripts/level.gd" id="1_6lwcx"]
+[ext_resource type="PackedScene" uid="uid://pf5emc2oxa8d" path="res://scenes/ball.tscn" id="2_pd1qi"]
+[ext_resource type="PackedScene" uid="uid://cc7tbp4qrbmoy" path="res://scenes/block.tscn" id="4_mx8sn"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_pd1qi"]
 height = 774.0
@@ -13,6 +15,7 @@ size = Vector2(1196.5, 20)
 size = Vector2(676.998, 27.5648)
 
 [node name="level" type="Node2D"]
+script = ExtResource("1_6lwcx")
 metadata/_edit_vertical_guides_ = [-97259.0]
 
 [node name="paddle" parent="." instance=ExtResource("1_4hgif")]
@@ -37,5 +40,7 @@ shape = SubResource("RectangleShape2D_6lwcx")
 [node name="right" type="CollisionShape2D" parent="walls"]
 position = Vector2(1172.37, 318.505)
 rotation = 1.57036
-scale = Vector2(1, 1)
 shape = SubResource("RectangleShape2D_s40gg")
+
+[node name="block" parent="." instance=ExtResource("4_mx8sn")]
+position = Vector2(434, 227)
