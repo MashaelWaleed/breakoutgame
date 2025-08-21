@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://djjor3udj625g"]
+[gd_scene load_steps=9 format=3 uid="uid://djjor3udj625g"]
 
 [ext_resource type="PackedScene" uid="uid://b43x1uq415quk" path="res://scenes/paddle.tscn" id="1_4hgif"]
 [ext_resource type="Script" uid="uid://8unyo7u6plcb" path="res://scripts/level.gd" id="1_6lwcx"]
@@ -14,18 +14,24 @@ size = Vector2(1196.5, 20)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_s40gg"]
 size = Vector2(676.998, 27.5648)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_mx8sn"]
+size = Vector2(1202, 28)
+
 [node name="level" type="Node2D"]
 script = ExtResource("1_6lwcx")
 metadata/_edit_vertical_guides_ = [-97259.0]
 
-[node name="paddle" parent="." instance=ExtResource("1_4hgif")]
-position = Vector2(37, 50)
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer"]
+modulate = Color(1, 0.541176, 1, 1)
+offset_left = 1630.0
+offset_top = -4.0
+offset_right = 2566.0
+offset_bottom = 457.0
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(579, 328)
-
-[node name="ball" parent="." instance=ExtResource("2_pd1qi")]
-position = Vector2(478, 432)
 
 [node name="walls" type="StaticBody2D" parent="."]
 
@@ -43,4 +49,18 @@ rotation = 1.57036
 shape = SubResource("RectangleShape2D_s40gg")
 
 [node name="block" parent="." instance=ExtResource("4_mx8sn")]
-position = Vector2(434, 227)
+position = Vector2(570, -103)
+
+[node name="killZone" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="killZone"]
+position = Vector2(584, 669)
+shape = SubResource("RectangleShape2D_mx8sn")
+
+[node name="paddle" parent="." instance=ExtResource("1_4hgif")]
+position = Vector2(87, 29)
+
+[node name="ball" parent="." groups=["Ball"] instance=ExtResource("2_pd1qi")]
+position = Vector2(591, 417)
+
+[connection signal="body_entered" from="killZone" to="." method="_on_kill_zone_body_entered"]

@@ -10,6 +10,7 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	pass
 func hit():
+	print("block is hit")
 	$Sprite2D.visible=false
 	$CollisionShape2D.disabled = true
 	#do not delete it directly so that we can add sounds and effects here 
