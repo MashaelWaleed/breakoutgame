@@ -15,6 +15,11 @@ run/main_scene="uid://djjor3udj625g"
 config/features=PackedStringArray("4.4", "Forward Plus")
 config/icon="res://icon.svg"
 
+[autoload]
+
+GameManager="*res://scenes/game_manager.tscn"
+ThemeManager="*res://scripts/theme_manager.gd"
+
 [display]
 
 window/stretch/mode="canvas_items"
@@ -22,3 +27,8 @@ window/stretch/mode="canvas_items"
 [global_group]
 
 Ball=""
+block=""
+
+[rendering]
+
+environment/defaults/default_clear_color=Color(0, 0, 0, 1)

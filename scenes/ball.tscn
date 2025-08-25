@@ -1,4 +1,4 @@
-[gd_scene load_steps=4 format=3 uid="uid://pf5emc2oxa8d"]
+[gd_scene load_steps=6 format=3 uid="uid://pf5emc2oxa8d"]
 
 [ext_resource type="Script" uid="uid://3bbfoim7gli5" path="res://scripts/ball.gd" id="1_ar7bl"]
 [ext_resource type="Texture2D" uid="uid://doeiuptuva6e4" path="res://assets/BreakOut Assets x2.png" id="2_lp5cg"]
@@ -6,13 +6,34 @@
 [sub_resource type="CircleShape2D" id="CircleShape2D_87nid"]
 radius = 14.0357
 
+[sub_resource type="Curve" id="Curve_cxlvu"]
+_data = [Vector2(0, 0.981241), 0.0, 0.0, 0, 0, Vector2(0.830508, 0), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="Gradient" id="Gradient_f7cbr"]
+offsets = PackedFloat32Array(0, 0.753333)
+colors = PackedColorArray(0, 0.745098, 0.752941, 1, 1, 1, 1, 1)
+
 [node name="ball" type="CharacterBody2D"]
 script = ExtResource("1_ar7bl")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
+z_index = 1
 texture = ExtResource("2_lp5cg")
 region_enabled = true
 region_rect = Rect2(382.252, 480.306, 35.2177, 31.1312)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_87nid")
+
+[node name="CPUParticles2D" type="CPUParticles2D" parent="."]
+modulate = Color(1, 1, 1, 0.537255)
+amount = 1000
+lifetime = 0.4
+emission_shape = 1
+emission_sphere_radius = 12.0
+gravity = Vector2(0, 0)
+scale_amount_min = 2.0
+scale_amount_max = 2.0
+scale_amount_curve = SubResource("Curve_cxlvu")
+color_ramp = SubResource("Gradient_f7cbr")

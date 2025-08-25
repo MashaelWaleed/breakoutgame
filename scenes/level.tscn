@@ -1,9 +1,11 @@
-[gd_scene load_steps=9 format=3 uid="uid://djjor3udj625g"]
+[gd_scene load_steps=11 format=3 uid="uid://djjor3udj625g"]
 
 [ext_resource type="PackedScene" uid="uid://b43x1uq415quk" path="res://scenes/paddle.tscn" id="1_4hgif"]
 [ext_resource type="Script" uid="uid://8unyo7u6plcb" path="res://scripts/level.gd" id="1_6lwcx"]
 [ext_resource type="PackedScene" uid="uid://pf5emc2oxa8d" path="res://scenes/ball.tscn" id="2_pd1qi"]
 [ext_resource type="PackedScene" uid="uid://cc7tbp4qrbmoy" path="res://scenes/block.tscn" id="4_mx8sn"]
+[ext_resource type="Texture2D" uid="uid://dig10avg5g8o6" path="res://assets/BG.png" id="5_ppgk2"]
+[ext_resource type="Script" uid="uid://b2kpqbcytl2g7" path="res://scripts/ThemePicker.gd" id="6_2r41h"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_pd1qi"]
 height = 774.0
@@ -48,7 +50,7 @@ position = Vector2(1172.37, 318.505)
 rotation = 1.57036
 shape = SubResource("RectangleShape2D_s40gg")
 
-[node name="block" parent="." instance=ExtResource("4_mx8sn")]
+[node name="block" parent="." groups=["block"] instance=ExtResource("4_mx8sn")]
 position = Vector2(570, -103)
 
 [node name="killZone" type="Area2D" parent="."]
@@ -58,9 +60,26 @@ position = Vector2(584, 669)
 shape = SubResource("RectangleShape2D_mx8sn")
 
 [node name="paddle" parent="." instance=ExtResource("1_4hgif")]
-position = Vector2(87, 29)
+position = Vector2(87, 20)
 
 [node name="ball" parent="." groups=["Ball"] instance=ExtResource("2_pd1qi")]
-position = Vector2(591, 417)
+z_index = 1
+position = Vector2(704, 418)
+
+[node name="Bg" type="Sprite2D" parent="."]
+self_modulate = Color(1, 1, 1, 0.407843)
+z_index = -1
+position = Vector2(580.5, 331)
+scale = Vector2(3.79365, 2.716)
+texture = ExtResource("5_ppgk2")
+
+[node name="CanvasLayer2" type="CanvasLayer" parent="."]
+
+[node name="ThemePicker" type="OptionButton" parent="CanvasLayer2"]
+offset_left = 35.0
+offset_top = 253.0
+offset_right = 91.0
+offset_bottom = 290.0
+script = ExtResource("6_2r41h")
 
 [connection signal="body_entered" from="killZone" to="." method="_on_kill_zone_body_entered"]

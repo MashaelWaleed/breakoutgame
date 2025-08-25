@@ -1,10 +1,13 @@
-[gd_scene load_steps=4 format=3 uid="uid://cc7tbp4qrbmoy"]
+[gd_scene load_steps=5 format=3 uid="uid://cc7tbp4qrbmoy"]
 
 [ext_resource type="Script" uid="uid://dii4br8pcdeei" path="res://scripts/block.gd" id="1_cgrg5"]
 [ext_resource type="Texture2D" uid="uid://d3bla7583iecl" path="res://assets/BreakOut Assets.png" id="2_4kun4"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ojgcc"]
 size = Vector2(30, 30)
+
+[sub_resource type="Gradient" id="Gradient_cgrg5"]
+colors = PackedColorArray(1, 0.855012, 0.159988, 1, 1, 1, 1, 1)
 
 [node name="block" type="RigidBody2D"]
 gravity_scale = 0.0
@@ -18,3 +21,20 @@ region_rect = Rect2(176.243, 112.318, 15.4589, 14.8644)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_ojgcc")
+
+[node name="CPUParticles2D" type="CPUParticles2D" parent="."]
+emitting = false
+amount = 50
+lifetime = 0.5
+one_shot = true
+preprocess = 0.5
+randomness = 1.0
+draw_order = 1
+emission_shape = 1
+emission_sphere_radius = 24.0
+gravity = Vector2(0, -500)
+linear_accel_min = 0.1
+linear_accel_max = 0.1
+scale_amount_min = 0.0
+scale_amount_max = 2.0
+color_ramp = SubResource("Gradient_cgrg5")

@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="ThemeData" load_steps=2 format=3 uid="uid://nnif443wlxep"]
+
+[ext_resource type="Script" uid="uid://dx8yjxe3exira" path="res://themes/ThemeData.gd" id="1_udsb4"]
+
+[resource]
+script = ExtResource("1_udsb4")
+name = "Classic"
+block_colors = Array[Color]([Color(1, 1, 0.54902, 1), Color(0, 0.87451, 0, 1), Color(1, 0.855012, 0.159988, 1)])
+particle_color = Color(1, 0, 1, 1)
+metadata/_custom_type_script = "uid://dx8yjxe3exira"
